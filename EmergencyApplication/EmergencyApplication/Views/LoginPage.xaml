@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EmergencyApplication.Views.LoginPage" Title="EMERGENCY SYSTEM">
+    <Grid>
+        <Grid RowDefinitions="Auto,Auto" HeightRequest="280" Margin="30,30,30,100"
+              RowSpacing="40" VerticalOptions="End">
+            <StackLayout Orientation="Vertical">
+                <Label x:Name="LoginError" FontSize="15" FontAttributes="Bold" Text="{Binding LoginError}" TextColor="White" HorizontalOptions="Center"/>
+                <Entry x:Name="Email" Text="{Binding Email}" Placeholder="Email"
+                           PlaceholderColor="White" HeightRequest="40" Keyboard="Email" TextColor="White"/>
+                    <Entry x:Name="Password" Text="{Binding Password}" Placeholder="Password"
+                           PlaceholderColor="White" HeightRequest="40" IsPassword="True" TextColor="White"/>
+                
+                <StackLayout Grid.Row="2" Orientation="Horizontal" Spacing="20" VerticalOptions="End" Padding="0,50,0,0">
+                    <Button Command="{Binding LoginCommand}" Text="Login" HeightRequest="50" WidthRequest="145" BackgroundColor="#E73053"
+                        TextColor="White" CornerRadius="25" FontAttributes="Bold"/>
+                    <Button Clicked="CancelButton_Clicked" Text="Cancel" HeightRequest="50" WidthRequest="145"
+                        BackgroundColor="White" TextColor="#2E4159" CornerRadius="25" FontAttributes="Bold"/>
+
+                </StackLayout>
+            </StackLayout>
+
+            
+        </Grid>
+    </Grid>
+</ContentPage>

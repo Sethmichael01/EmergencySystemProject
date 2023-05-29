@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:EmergencyApplication.ViewModels"
+             x:Class="EmergencyApplication.Views.IndexPage" Title="EMERGENCY SYSTEM">
+    <ContentPage.BindingContext>
+        <vm:IndexViewModel/>
+    </ContentPage.BindingContext>
+   
+    <Grid>
+        <Grid RowDefinitions="2*,2*,*, 2*" HeightRequest="500" Margin="30,30,30,50"
+              RowSpacing="20" VerticalOptions="Center">
+            <Image Grid.Row="0" HorizontalOptions="Center" WidthRequest="150" Source="emergency_image.png"/>
+            <CarouselView Grid.Row="1" x:Name="cvPageContent" IndicatorView="LandingIndicator"
+                          ItemsSource="{Binding PageContents}" VerticalOptions="End">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Spacing="10">
+                            <Label Text="{Binding Heading}" TextColor="White" FontSize="26" FontAttributes="Bold"
+                                   WidthRequest="220" HorizontalOptions="Start"/>
+                            <Label Text="{Binding Caption}" TextColor="White" FontSize="14" WidthRequest="250" HorizontalOptions="Start" />
+                        </StackLayout>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+            <IndicatorView Grid.Row="2" x:Name="LandingIndicator" IndicatorsShape="Circle"
+                           IndicatorColor="#888888" SelectedIndicatorColor="#E7305E"/>
+            <StackLayout Grid.Row="3" Orientation="Horizontal" HorizontalOptions="Center" Spacing="20" VerticalOptions="Start">
+                <Button Clicked="LoginButton_Clicked" Text="Login" HeightRequest="50" WidthRequest="145" BackgroundColor="#E73053"
+                        TextColor="White" CornerRadius="25" FontAttributes="Bold"/>
+                <Button Clicked="RegisterButton_Clicked" Text="Register" HeightRequest="50" WidthRequest="145"
+                        BackgroundColor="White" TextColor="#2E4159" CornerRadius="25" FontAttributes="Bold"/>              
+                
+            </StackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>

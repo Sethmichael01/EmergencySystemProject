@@ -1,0 +1,28 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@if (SignInManager.IsSignedIn(User) && User.IsInRole("Staff"))
+{
+    <li class="has-submenu">
+        <a href="#section2">Setup</a>
+        <ul class="sub-menu">
+            <li><a class="external" asp-action="Index" asp-controller="States">States</a></li>
+            <li><a class="external" asp-action="Index" asp-controller="LocalGovernments">LGA</a></li>
+            <li><a class="external" asp-action="Index" asp-controller="Communities">Communities</a></li>
+            <li><a class="external" asp-action="Index" asp-controller="Sectors">Sectors</a></li>
+            <li><a class="external" asp-action="Index" asp-controller="Organizations">Organizations</a></li>
+        </ul>
+    </li>
+    <li class="has-submenu">
+        <a href="#section2">User Management</a>
+        <ul class="sub-menu">
+            <li><a class="external" asp-action="Index" asp-controller="Staffs">Staff</a></li>
+            <li><a class="external" asp-action="Index" asp-controller="Citizens">Citizens</a></li>
+        </ul>
+    </li>
+}
+else
+{
+
+}

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EmergencyApplication.Views.UpdateProfilePage" Title="EMERGENCY SYSTEM">
+    <Grid>
+        <Grid RowDefinitions="Auto" HeightRequest="800" Margin="30,40,30,30"
+              VerticalOptions="End">
+            <Label Text="UPDATE PROFILE" TextColor="White" Padding="0,10,0,30" FontSize="25" FontAttributes="Bold" HorizontalOptions="Center"/>
+
+            <StackLayout Orientation="Vertical" Padding="0,30,0,0" Spacing="10">
+                <Entry x:Name="FirstName" Text="{Binding FirstName, Mode=TwoWay}" Placeholder="FirstName"
+                           PlaceholderColor="White" HeightRequest="40" Keyboard="Text" TextColor="White"/>
+                <Entry x:Name="MiddleName" Text="{Binding MiddleName}" Placeholder="MiddleName"
+                           PlaceholderColor="White" HeightRequest="40" Keyboard="Text" TextColor="White"/>
+                <Entry x:Name="LastName" Text="{Binding LastName}" Placeholder="LastName"
+                           PlaceholderColor="White" HeightRequest="40" Keyboard="Text" TextColor="White"/>
+                <Entry x:Name="PhoneNumber" Text="{Binding PhoneNumber}" Placeholder="PhoneNumber"
+                           PlaceholderColor="White" HeightRequest="40" Keyboard="Telephone" TextColor="White"/>
+                <Entry x:Name="Email" Text="{Binding Email}" Placeholder="Email" IsEnabled="False"
+                           PlaceholderColor="White" HeightRequest="40" Keyboard="Email" TextColor="White"/>
+                <Editor x:Name="Comment" Text="{Binding Address}" Placeholder="Comment" PlaceholderColor="White" HeightRequest="100" TextColor="White"></Editor>
+
+
+                <StackLayout Grid.Row="2" Orientation="Horizontal" Spacing="20" VerticalOptions="End" Padding="0,50,0,0">
+                    <Button Clicked="UpdateProfileButton_Clicked" Text="Update" HeightRequest="50" WidthRequest="145" BackgroundColor="#E73053"
+                        TextColor="White" CornerRadius="25" FontAttributes="Bold"/>
+                    <Button Clicked="CancelButton_Clicked" Text="Cancel" HeightRequest="50" WidthRequest="145"
+                        BackgroundColor="White" TextColor="#2E4159" CornerRadius="25" FontAttributes="Bold"/>
+
+                </StackLayout>
+            </StackLayout>
+
+
+        </Grid>
+
+
+    </Grid>
+</ContentPage>

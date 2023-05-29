@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             
+             x:Class="EmergencyApplication.App">
+    <Application.Resources>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="White"/>
+        </Style>
+        <Style TargetType="Entry">
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="PlaceholderColor" Value="White"/>
+        </Style>
+        <Style TargetType="Editor">
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="PlaceholderColor" Value="White"/>
+        </Style>
+        <Style TargetType="ContentPage" ApplyToDerivedTypes="True">
+            <Setter Property="ControlTemplate">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Grid>
+                            <BoxView>
+                                <BoxView.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Color="#2E4042" Offset="0"/>
+                                        <GradientStop Color="#2E4159" Offset="0.9"/>
+                                        <GradientStop Color="#2E4159" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </BoxView.Background>
+                            </BoxView>
+                           
+                            <ContentPresenter />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Application.Resources>
+</Application>

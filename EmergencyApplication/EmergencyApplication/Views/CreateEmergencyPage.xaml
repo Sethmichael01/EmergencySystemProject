@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:x1="http://xamarin.com/schemas/2014/forms/design"
+             x:Class="EmergencyApplication.Views.CreateEmergencyPage"
+             Title="{Binding SectorName}">
+    <Grid>
+        <Grid RowDefinitions="Auto,Auto" HeightRequest="280" Margin="30,30,30,100"
+              RowSpacing="40" VerticalOptions="End">
+            <StackLayout Orientation="Vertical">
+                <Entry x:Name="Title" Text="{Binding Title}" Placeholder="Title" 
+                       PlaceholderColor="White" HeightRequest="40" TextColor="White"/>
+                <Editor x:Name="Comment" Text="{Binding Comment}" Placeholder="Comment" PlaceholderColor="White" HeightRequest="100" TextColor="White"></Editor>
+                <Entry x:Name="EmergencyRequestId" IsVisible="false" Text="{Binding EmergencyRequestId}" Placeholder="EmergencyRequestId" 
+                       PlaceholderColor="White" HeightRequest="40" TextColor="White"/>
+
+                <Entry x:Name="SectorId" IsVisible="false" Text="{Binding SectorId, Mode=TwoWay}" Placeholder="SectorId" 
+                       PlaceholderColor="White" HeightRequest="40" TextColor="White"/>
+
+                <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="20" VerticalOptions="CenterAndExpand" Padding="0,50,0,0">
+                    <Button Command="{Binding SubmitRequestCommand}" Text="Submit" HeightRequest="50" WidthRequest="145" BackgroundColor="#E73053" 
+                        TextColor="White" CornerRadius="25" FontAttributes="Bold"/>
+                    <Button Clicked="CancelButton_Clicked" Text="Cancel" HeightRequest="50" WidthRequest="145" BackgroundColor="White" 
+                        TextColor="#2E4159" CornerRadius="25" FontAttributes="Bold"/>
+                </StackLayout>
+            </StackLayout>
+
+        </Grid>
+    </Grid>
+</ContentPage>

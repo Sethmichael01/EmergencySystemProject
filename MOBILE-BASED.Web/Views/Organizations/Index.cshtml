@@ -1,0 +1,74 @@
+﻿@model IEnumerable<MOBILE_BASED.ViewModels.OrganizationVm>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div id="work_banner" class="banner-wrapper bg-light w-100 py-5">
+    <div class="banner-vertical-center-work container text-light d-flex justify-content-center align-items-center py-5 p-0">
+        <div class="banner-content col-lg-8 col-12 m-lg-auto text-center">
+            <h1 class="banner-heading h2 display-3 pb-5 semi-bold-600 typo-space-line-center text-dark">Organizations</h1>
+            <a class="btn rounded-pill btn-secondary text-light px-4 light-300" asp-action="AddOrUpdate">Create New</a>
+
+        </div>
+    </div>
+</div>
+<section class="container py-5">
+    <div class="row pb-4">
+        <div class="col-lg-12 ">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.OrganizationName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.RegistrationNumber)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Address)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CommunityName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SectorName)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.OrganizationName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.RegistrationNumber)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Address)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CommunityName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SectorName)
+                            </td>
+                            <td>
+                                <a asp-action="AddOrUpdate" asp-route-id="@item.OrganizationId">Edit</a> |
+                                <a asp-action="Delete" asp-route-id="@item.OrganizationId">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+
+<p>
+    <a asp-action="AddOrUpdate">Create New</a>
+</p>

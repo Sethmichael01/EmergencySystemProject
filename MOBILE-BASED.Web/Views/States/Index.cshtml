@@ -1,0 +1,53 @@
+﻿@model IEnumerable<MOBILE_BASED.ViewModels.StateVm>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div id="work_banner" class="banner-wrapper bg-light w-100 py-5">
+    <div class="banner-vertical-center-work container text-light d-flex justify-content-center align-items-center py-5 p-0">
+        <div class="banner-content col-lg-8 col-12 m-lg-auto text-center">
+            <h1 class="banner-heading h2 display-3 pb-5 semi-bold-600 typo-space-line-center text-dark">States</h1>
+            <a class="btn rounded-pill btn-secondary text-light px-4 light-300" asp-action="AddOrUpdate">Create New</a>
+
+        </div>
+    </div>
+</div>
+<section class="container py-5">
+    <div class="row pb-4">
+        <div class="col-lg-12 ">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StateCode)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StateName)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.StateCode)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.StateName)
+                            </td>
+                            <td>
+                                <a asp-action="AddOrUpdate" asp-route-id="@item.StateId">Edit</a> |
+                                <a class="third" asp-action="Delete" asp-route-id="@item.StateId">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+

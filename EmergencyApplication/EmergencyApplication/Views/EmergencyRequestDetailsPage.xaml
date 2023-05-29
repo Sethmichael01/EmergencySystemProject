@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EmergencyApplication.Views.EmergencyRequestDetailsPage" 
+             Title="EMERGENCY DETAILS">
+    <ContentPage.Content>
+       
+        <StackLayout Padding="0,50,0,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="70" />
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition  Height="50"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Label Text="Alarm Type" FontSize="13" Grid.Row="0" Grid.Column="0" FontAttributes="Italic" HorizontalOptions="Center" VerticalOptions="Center" />
+                <Label Text="{Binding SectorName}" FontSize="15" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" FontAttributes="Bold" VerticalOptions="End"/>
+
+                <Label Text="Respondent Name" FontSize="13" Grid.Row="0" Grid.Column="1" FontAttributes="Italic" HorizontalOptions="Center" VerticalOptions="Center" />
+                <Label Text="{Binding StaffName}" FontSize="15" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" FontAttributes="Bold" VerticalOptions="End"/>
+
+                <Label Text="Status" FontSize="13" Grid.Row="0" Grid.Column="2" FontAttributes="Italic" HorizontalOptions="Center" VerticalOptions="Center" />
+                <Label Text="{Binding Status}" FontSize="15" Grid.Row="0" Grid.Column="2" HorizontalOptions="Center" FontAttributes="Bold" VerticalOptions="End"/>
+
+                <Label Text="Title" FontSize="13" Grid.Row="1" Grid.ColumnSpan="3" FontAttributes="Italic" HorizontalOptions="Center" VerticalOptions="Center" />
+                <Label Text="{Binding Title}" FontSize="20" Grid.Row="1" Grid.ColumnSpan="3" HorizontalOptions="Center" FontAttributes="Bold" VerticalOptions="End"/>
+                <StackLayout Padding="20,10,20,0" Grid.Row="2" Grid.ColumnSpan="3">
+                    <Label  Text="Comment" FontSize="15" Grid.Row="2" Grid.ColumnSpan="3" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center" />
+                    <Label Text="{Binding Comment}" FontSize="13" 
+                   Grid.Row="2" Grid.ColumnSpan="3" HorizontalOptions="Start" VerticalOptions="End"/>
+                </StackLayout>
+                <Label Text="Created Date" FontSize="13" Grid.Row="3" Grid.Column="0" FontAttributes="Italic" HorizontalOptions="Center" VerticalOptions="Center" />
+                <Label Text="{Binding DisplayForCreatedDate}" FontSize="15" Grid.Row="3" Grid.Column="0" HorizontalOptions="Center" FontAttributes="Bold" VerticalOptions="End"/>
+
+                <Label Text="RequestedTime" FontSize="13" Grid.Row="3" Grid.Column="1" FontAttributes="Italic" HorizontalOptions="Center" VerticalOptions="Center" />
+                <Label Text="{Binding DispalyForRequestTime}" FontSize="15" Grid.Row="3" Grid.Column="1" HorizontalOptions="Center" FontAttributes="Bold" VerticalOptions="End"/>
+
+                <Label Text="Completed At" FontSize="13" Grid.Row="3" Grid.Column="2" FontAttributes="Italic" HorizontalOptions="Center" VerticalOptions="Center" />
+                <Label Text="{Binding DispalyForCompletedAt}" FontSize="15" Grid.Row="3" Grid.Column="2" HorizontalOptions="Center" FontAttributes="Bold" VerticalOptions="End"/>
+
+                <!--<Label Text="Longitude" FontSize="13" Grid.Row="4" Grid.Column="0" FontAttributes="Italic" HorizontalOptions="Center" VerticalOptions="Center" />
+                <Label Text="{Binding Longitude}" FontSize="15" Grid.Row="4" Grid.Column="0" HorizontalOptions="Center" FontAttributes="Bold" VerticalOptions="End"/>
+
+                <Label Text="Latitude" FontSize="13" Grid.Row="4" Grid.Column="1" FontAttributes="Italic" HorizontalOptions="Center" VerticalOptions="Center" />
+                <Label Text="{Binding Latitude}" FontSize="15" Grid.Row="4" Grid.Column="1" HorizontalOptions="Center" FontAttributes="Bold" VerticalOptions="End"/>
+
+                <Label Text="Altitude" FontSize="13" Grid.Row="4" Grid.Column="2" FontAttributes="Italic" HorizontalOptions="Center" VerticalOptions="Center" />
+                <Label Text="{Binding Altitude}" FontSize="15" Grid.Row="4" Grid.Column="2" HorizontalOptions="Center" FontAttributes="Bold" VerticalOptions="End"/>-->
+            </Grid>
+            <StackLayout Padding="0,20,0,0">
+                <Button x:Name="AssignButton" Clicked="Button_Clicked" IsVisible="False" Grid.Row="4" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center"  HeightRequest="50" WidthRequest="145"
+                        TextColor="White" CornerRadius="25" FontAttributes="Bold"/>
+                <Button Clicked="OnDismissButton_Clicked" Grid.Row="4" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" Text="Dismiss" HeightRequest="50" WidthRequest="145" BackgroundColor="White" 
+                        TextColor="#2E4159" CornerRadius="25" FontAttributes="Bold"/>
+                <Button Clicked="NavigateTo" Text="Navigate To Location" HeightRequest="50" WidthRequest="145"
+                        BackgroundColor="Blue" TextColor="white" CornerRadius="25" FontAttributes="Bold"/>
+            </StackLayout>
+        </StackLayout>
+       
+        
+    </ContentPage.Content>
+</ContentPage>

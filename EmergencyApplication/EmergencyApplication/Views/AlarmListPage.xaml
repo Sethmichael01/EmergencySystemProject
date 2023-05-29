@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EmergencyApplication.Views.AlarmListPage"
+             >
+    <ContentPage.Content>
+            <Grid>
+                <Grid RowDefinitions="Auto,Auto" HeightRequest="600" Margin="30,30,30,0"
+              RowSpacing="40" VerticalOptions="CenterAndExpand">
+
+
+                <StackLayout Grid.Row="0" Spacing="10">
+                        <Label Text="RAISE ALARM" TextColor="White" FontSize="26" FontAttributes="Bold"
+                                   WidthRequest="220" HorizontalOptions="Start"/>
+                        <Label Text="Click on the alarm button that suites your situation." TextColor="White" FontSize="14" WidthRequest="250" HorizontalOptions="Start" />
+                    </StackLayout>
+
+
+                <StackLayout Grid.Row="1"  Spacing="0" Padding="10, 40, 10, 40" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+
+                    <ListView x:Name="AlarmListView" ItemSelected="AlarmListView_ItemSelected">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Label Text="{Binding DisplaySectorName}" HorizontalOptions="CenterAndExpand" FontSize="25" VerticalOptions="Center" WidthRequest="350" BackgroundColor="#E73053" 
+                        TextColor="White"  FontAttributes="Bold"/>
+                                </ViewCell>                                
+                        </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                        <!--<Button Clicked="AlarmButton_Clicked" Text="Fire Alarm" HeightRequest="50" WidthRequest="145" BackgroundColor="#E73053"
+                        TextColor="White" CornerRadius="25" FontAttributes="Bold"/>
+                    <Button Clicked="AlarmButton_Clicked" Text="Health Alarm" HeightRequest="50" WidthRequest="145"
+                        BackgroundColor="White" TextColor="#2E4159" CornerRadius="25" FontAttributes="Bold"/>-->
+                    </StackLayout>
+
+                </Grid>
+            </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

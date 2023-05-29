@@ -1,0 +1,91 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Register</title>
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- Font-->
+    <link rel="stylesheet" type="text/css" href="~/ProjectTemplate/colorlib-regform-31/css/roboto-font.css">
+    <link rel="stylesheet" type="text/css" href="~/ProjectTemplate/colorlib-regform-31/fonts/font-awesome-5/css/fontawesome-all.min.css">
+    <!-- Main Style Css -->
+    <link rel="stylesheet" href="~/ProjectTemplate/colorlib-regform-31/css/style.css" />
+</head>
+<body class="form-v5">
+    <div class="page-content">
+        <div class="form-v5-content">
+            <form class="form-detail" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <h2>Register Account Form</h2>
+                <div class="form-row">
+                    <label asp-for="Input.FirstName" for="full-name">First Name</label>
+                    <input type="text" asp-for="Input.FirstName" id="full-name" class="input-text" placeholder="Your First Name" required>
+                    <i class="fas fa-user"></i>
+                    <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-row">
+                    <label asp-for="Input.MiddleName" for="full-name">Middle Name</label>
+                    <input type="text" asp-for="Input.MiddleName" id="full-name" class="input-text" placeholder="Your Middle Name" required>
+                    <i class="fas fa-user"></i>
+                    <span asp-validation-for="Input.MiddleName" class="text-danger"></span>
+                </div>
+                <div class="form-row">
+                    <label asp-for="Input.LastName" for="full-name">Last Name</label>
+                    <input type="text" asp-for="Input.LastName" id="full-name" class="input-text" placeholder="Your Last Name" required>
+                    <i class="fas fa-user"></i>
+                    <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                </div>
+                <div class="form-row">
+                    <label asp-for="Input.PhoneNumber" for="full-name">Phone Number</label>
+                    <input asp-for="Input.PhoneNumber" id="full-name" class="input-text" placeholder="Your Phone Number" required>
+                    <i class="fas fa-phone"></i>
+                    <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                </div>
+                <div class="form-row">
+                    <label asp-for="Input.Email" for="your-email">Your Email</label>
+                    <input asp-for="Input.Email" type="text" id="your-email" class="input-text" placeholder="Your Email" required>
+                    <i class="fas fa-envelope"></i>
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="form-row">
+                    <label asp-for="Input.Password" for="password">Password</label>
+                    <input asp-for="Input.Password" type="password" id="password" class="input-text" placeholder="Your Password" required>
+                    <i class="fas fa-lock"></i>
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="form-row">
+                    <label asp-for="Input.ConfirmPassword" for="password">Confirm Password</label>
+                    <input asp-for="Input.ConfirmPassword" type="password" id="password" class="input-text" placeholder="Confirm Your Password" required>
+                    <i class="fas fa-lock"></i>
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                </div>
+                <div class="form-row-last">
+                    <input type="submit" name="register" class="register" value="Register">
+                </div>
+                <div class="form-group">
+                    <p>
+                        <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                    </p>
+                    <p>
+                        <a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl">Login as a user</a>
+                    </p>
+                    <p>
+                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

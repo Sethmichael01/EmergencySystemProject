@@ -1,0 +1,40 @@
+﻿@model MOBILE_BASED.ViewModels.SectorVm
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<section class="section contact" data-section="section6">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-heading">
+                    <h2>Sector</h2>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <form asp-action="AddOrUpdate">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="SectorId" />
+                    <div class="form-group">
+                        <label asp-for="SectorCode" class="control-label text-white"></label>
+                        <input asp-for="SectorCode" class="form-control" />
+                        <span asp-validation-for="SectorCode" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SectorName" class="control-label text-white"></label>
+                        <input asp-for="SectorName" class="form-control" />
+                        <span asp-validation-for="SectorName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary text-white" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

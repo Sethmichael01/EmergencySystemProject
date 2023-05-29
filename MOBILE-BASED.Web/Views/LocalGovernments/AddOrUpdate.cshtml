@@ -1,0 +1,44 @@
+﻿@model MOBILE_BASED.ViewModels.LgaVm
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<section class="section contact" data-section="section6">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-heading">
+                    <h2>LGA</h2>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <form asp-action="AddOrUpdate">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="LocalGovernmentId" />
+                    <div class="form-group">
+                        <label asp-for="StateId" class="control-label text-white"></label>
+                        <select asp-for="StateId" class="form-control" asp-items="ViewBag.StateId"></select>
+                        <span asp-validation-for="StateId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="LgaCode" class="control-label text-white"></label>
+                        <input asp-for="LgaCode" class="form-control" />
+                        <span asp-validation-for="LgaCode" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="LgaName" class="control-label text-white"></label>
+                        <input asp-for="LgaName" class="form-control" />
+                        <span asp-validation-for="LgaName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary text-white" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

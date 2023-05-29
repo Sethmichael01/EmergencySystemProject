@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EmergencyApplication.Views.SettingsPage"
+             IconImageSource="settings.png" Title="SETTINGS">
+    <ContentPage.Content>
+        <StackLayout Padding="20,50,20,0" Spacing="30">
+            <StackLayout>
+                <Label Text="{Binding Title}" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center"/>
+                <Label Text="{Binding Content}" FontSize="15" HorizontalTextAlignment="Start"/>
+
+            </StackLayout>
+            
+
+            <Button Clicked="OnUpdateButton_Clicked" Text="Update Profile" HeightRequest="50" WidthRequest="145"
+                        BackgroundColor="White" TextColor="#2E4159" CornerRadius="25" FontAttributes="Bold"/>
+            <Button Clicked="OnLogOutButton_Clicked" Text="Log Out" HeightRequest="50" WidthRequest="145" BackgroundColor="#E73053"
+                        TextColor="White" CornerRadius="25" FontAttributes="Bold"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

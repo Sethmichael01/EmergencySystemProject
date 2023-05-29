@@ -1,0 +1,43 @@
+﻿@page
+@model ResendEmailConfirmationModel
+@{
+    ViewData["Title"] = "Resend email confirmation";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>@ViewData["Title"]</title>
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- Font-->
+    <link rel="stylesheet" type="text/css" href="~/ProjectTemplate/colorlib-regform-31/css/roboto-font.css">
+    <link rel="stylesheet" type="text/css" href="~/ProjectTemplate/colorlib-regform-31/fonts/font-awesome-5/css/fontawesome-all.min.css">
+    <!-- Main Style Css -->
+    <link rel="stylesheet" href="~/ProjectTemplate/colorlib-regform-31/css/style.css" />
+</head>
+<body class="form-v5">
+    <div class="page-content">
+        <div class="form-v5-content">
+            <form class="form-detail" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <h2>@ViewData["Title"]</h2>
+                <div class="form-row">
+                    <label asp-for="Input.Email" for="your-email">Your Email</label>
+                    <input asp-for="Input.Email" type="text" id="your-email" class="input-text" placeholder="Your Email" required>
+                    <i class="fas fa-envelope"></i>
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="form-row-last">
+                    <input type="submit" name="register" class="register" value="Resend">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

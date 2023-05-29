@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <RootNamespace>MOBILE_BASED.Infrastructure</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MOBILE-BASED.Models\MOBILE-BASED.Models.csproj" />
+    <ProjectReference Include="..\MOBILE-BASED.ViewModels\MOBILE-BASED.ViewModels.csproj" />
+  </ItemGroup>
+
+</Project>

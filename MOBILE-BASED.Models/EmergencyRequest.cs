@@ -20,5 +20,8 @@ namespace MOBILE_BASED.Models
         public Citizen Citizen { get; set; }
         public Sector Sector { get; set; }
         public Staff Staff { get; set; }
+        public double StaffLongitude { get; set; }
+        public double StaffLatitude { get; set; }
+        public double? StaffAltitude { get; set; }
     }
 }

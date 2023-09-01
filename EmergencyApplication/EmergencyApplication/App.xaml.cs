@@ -1,12 +1,13 @@
-﻿using EmergencyApplication.Views;
-using System;
+﻿using EmergencyApplication.Constant;
+using EmergencyApplication.Services;
+using EmergencyApplication.Views;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace EmergencyApplication
 {
     public partial class App : Application
     {
+        private ApiCallServiceTimer apiCallService;
         public static bool IsUserLoggedIn { get; set; }
         public static int UserId { get; set; }
         public static string UserRole { get; set; }
@@ -32,6 +33,10 @@ namespace EmergencyApplication
 
         protected override void OnStart()
         {
+            if(UserRole == RoleName.Staff)
+            {
+                apiCallService = new ApiCallServiceTimer();
+            }
         }
 
         protected override void OnSleep()

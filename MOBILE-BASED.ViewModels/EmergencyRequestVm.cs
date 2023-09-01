@@ -22,5 +22,8 @@ namespace MOBILE_BASED.ViewModels
         public string CitizenName { get; set; }
         public string SectorName { get; set; }
         public string StaffName { get; set; }
+        public double StaffLongitude { get; set; }
+        public double StaffLatitude { get; set; }
+        public double? StaffAltitude { get; set; }
     }
 }

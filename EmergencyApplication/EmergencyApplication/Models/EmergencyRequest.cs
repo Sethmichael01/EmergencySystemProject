@@ -24,6 +24,9 @@ namespace EmergencyApplication.Models
         public string DisplayForCreatedDate => RequestTime.ToString("dd MMM yyyy");
         public string Title { get; set; }
         public string Comment { get; set; }
+        public double StaffLongitude { get; set; }
+        public double StaffLatitude { get; set; }
+        public double? StaffAltitude { get; set; }
         public string DisplayForStatus => Status;
 
         public string DispalyForRequestTime

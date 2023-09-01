@@ -16,8 +16,8 @@ namespace EmergencyApplication.Views
     public partial class EmergencyRequestDetailsPage : ContentPage
     {
         private HttpClientService<EmergencyRequest> _clientService = new HttpClientService<EmergencyRequest>();
-
-        private EmergencyRequest request; 
+        private EmergencyRequest request;
+        private bool isPageVisible;
         public EmergencyRequestDetailsPage(EmergencyRequest model)
         {
             request = model;
@@ -49,7 +49,11 @@ namespace EmergencyApplication.Views
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
+            var location = await GetLocationAsync();
             request.StaffId = App.UserId;
+            request.StaffLatitude = location.StaffLatitude;
+            request.StaffLongitude = location.StaffLongitude;
+            request.StaffAltitude = location.StaffAltitude;
             request.Status = request.Status == RequestStatus.Pending.ToString() ? RequestStatus.InProgress.ToString() : RequestStatus.Completed.ToString();
             if(request.Status == RequestStatus.Completed.ToString())
             {
@@ -72,7 +76,33 @@ namespace EmergencyApplication.Views
                 //AssignError.TextColor = Color.Red;
             }
         }
-
+        private async void Button_Clicked_Timer()
+        {
+            var location = await GetLocationAsync();
+            request.StaffId = App.UserId;
+            request.StaffLatitude = location.StaffLatitude;
+            request.StaffLongitude = location.StaffLongitude;
+            request.StaffAltitude = location.StaffAltitude;
+            //request.Status = request.Status == RequestStatus.Pending.ToString() ? RequestStatus.InProgress.ToString() : RequestStatus.Completed.ToString();
+            if (request.Status == RequestStatus.Completed.ToString())
+            {
+                request.CompletedAt = DateTime.Now;
+            }
+            var res = await _clientService.PostAsync(request, AppSettings.AddOrUpdateEmergencyRequest);
+        }
+        private async Task<EmergencyRequest> GetLocationAsync()
+        {
+            var location = await Geolocation.GetLocationAsync(new GeolocationRequest
+            {
+                DesiredAccuracy = GeolocationAccuracy.Best,
+                Timeout = TimeSpan.FromSeconds(80)
+            });
+            EmergencyRequest values = new EmergencyRequest();
+            values.StaffLongitude = location.Longitude;
+            values.StaffLatitude = location.Latitude;
+            values.StaffAltitude = location.Altitude;
+            return values;
+        }
         private async Task ReloadPage()
         {
             /// Create a new instance of the EmergencyRequestDetailsPage and present it modally
@@ -81,9 +111,53 @@ namespace EmergencyApplication.Views
         }
         private async void NavigateTo(object sender, EventArgs e)
         {
-            var location = new Location(request.Latitude, request.Longitude);
-            var options = new MapLaunchOptions { NavigationMode = NavigationMode.Driving };
-            await Map.OpenAsync(location, options);
+            if(App.UserRole == RoleName.Staff)
+            {
+                var location = new Location(request.Latitude, request.Longitude);
+                var options = new MapLaunchOptions { NavigationMode = NavigationMode.Driving };
+                await Map.OpenAsync(location, options);
+            }
+            else
+            {
+                var location = new Location(request.StaffLatitude, request.StaffLongitude);
+                var options = new MapLaunchOptions { NavigationMode = NavigationMode.Driving };
+                await Map.OpenAsync(location, options);
+            }
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            isPageVisible = true;
+
+            Device.StartTimer(TimeSpan.FromSeconds(30), () =>
+            {
+                if (isPageVisible)
+                {
+                    Button_Clicked_Timer();
+                    return true; // keeps the timer running
+                }
+
+                return false; // stops the timer
+            });
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            isPageVisible = false;
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            if (request.Status != RequestStatus.Completed.ToString())
+            {
+                // The request is not completed, so we prevent the back button from closing the page.
+                return true;
+            }
+
+            // The request is completed, so we allow the back button to close the page.
+            return base.OnBackButtonPressed();
         }
     }
 }

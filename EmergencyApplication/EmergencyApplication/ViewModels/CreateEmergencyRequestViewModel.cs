@@ -1,4 +1,5 @@
-﻿using EmergencyApplication.Models;
+﻿using EmergencyApplication.Helper;
+using EmergencyApplication.Models;
 using EmergencyApplication.Services;
 using EmergencyApplication.Views;
 using Newtonsoft.Json;
@@ -82,14 +83,14 @@ namespace EmergencyApplication.ViewModels
             {
                 return new Command(async () =>
                 {
-                    var location = await GetLocationAsync();
+                    var location = await GeoLocation.GetLocationAsync();
                     var res = await _clientService.PostAsync(new EmergencyRequest
                     {
                         Title = title,
                         Comment = comment,
                         CitizenId = App.UserId,
                         SectorId = sectorId,
-                        Longitude = location.Longitide,
+                        Longitude = location.Longitude,
                         Latitude = location.Latitude,
                         Altitude = location.Latitude,
                         RequestTime = DateTime.Now
@@ -110,19 +111,6 @@ namespace EmergencyApplication.ViewModels
         public void OnSubmitEmergencyRequest()
         {
             DisplaySubmissionPrompt();
-        }
-        private async Task<Location> GetLocationAsync()
-        {
-            var location = await Geolocation.GetLocationAsync(new GeolocationRequest
-            {
-                DesiredAccuracy = GeolocationAccuracy.Medium,
-                Timeout = TimeSpan.FromSeconds(30)
-            });
-            Location values = new Location();
-            values.Longitide = location.Longitude;
-            values.Latitude = location.Latitude;
-            values.Altitude = location.Altitude;
-            return values;
         }
     }
     public class Location

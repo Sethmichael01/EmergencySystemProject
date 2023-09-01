@@ -1,4 +1,5 @@
 ﻿using EmergencyApplication.Constant;
+using EmergencyApplication.Helper;
 using EmergencyApplication.Models;
 using EmergencyApplication.Services;
 using System;
@@ -49,7 +50,7 @@ namespace EmergencyApplication.Views
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            var location = await GetLocationAsync();
+            var location = await GeoLocation.GetEmergencyLocationAsync();
             request.StaffId = App.UserId;
             request.StaffLatitude = location.StaffLatitude;
             request.StaffLongitude = location.StaffLongitude;
@@ -78,7 +79,7 @@ namespace EmergencyApplication.Views
         }
         private async void Button_Clicked_Timer()
         {
-            var location = await GetLocationAsync();
+            var location = await GeoLocation.GetEmergencyLocationAsync();
             request.StaffId = App.UserId;
             request.StaffLatitude = location.StaffLatitude;
             request.StaffLongitude = location.StaffLongitude;
@@ -90,19 +91,7 @@ namespace EmergencyApplication.Views
             }
             var res = await _clientService.PostAsync(request, AppSettings.AddOrUpdateEmergencyRequest);
         }
-        private async Task<EmergencyRequest> GetLocationAsync()
-        {
-            var location = await Geolocation.GetLocationAsync(new GeolocationRequest
-            {
-                DesiredAccuracy = GeolocationAccuracy.Best,
-                Timeout = TimeSpan.FromSeconds(80)
-            });
-            EmergencyRequest values = new EmergencyRequest();
-            values.StaffLongitude = location.Longitude;
-            values.StaffLatitude = location.Latitude;
-            values.StaffAltitude = location.Altitude;
-            return values;
-        }
+
         private async Task ReloadPage()
         {
             /// Create a new instance of the EmergencyRequestDetailsPage and present it modally

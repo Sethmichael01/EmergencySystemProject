@@ -1,9 +1,9 @@
-﻿using EmergencyApplication.Models;
+﻿using EmergencyApplication.Helper;
+using EmergencyApplication.Models;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Timers;
-using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace EmergencyApplication.Services
@@ -31,7 +31,7 @@ namespace EmergencyApplication.Services
         private async Task OnTimerTickAsync()
         {
             // Make the API call
-            var location = await GetLocationAsync();
+            var location = await GeoLocation.GetLocationAsync();
             request.StaffLongitude = location.Longitude;
             request.StaffLatitude = location.Latitude;
             request.StaffAltitude = location.Altitude;
@@ -44,20 +44,6 @@ namespace EmergencyApplication.Services
 
             // Return true to continue the timer, or false to stop it
             //return true;
-        }
-
-        private static async Task<Location> GetLocationAsync()
-        {
-            var location = await Geolocation.GetLocationAsync(new GeolocationRequest
-            {
-                DesiredAccuracy = GeolocationAccuracy.Medium,
-                Timeout = TimeSpan.FromSeconds(30)
-            });
-            Location values = new Location();
-            values.Longitude = location.Longitude;
-            values.Latitude = location.Latitude;
-            values.Altitude = location.Altitude;
-            return values;
         }
     }
 }
